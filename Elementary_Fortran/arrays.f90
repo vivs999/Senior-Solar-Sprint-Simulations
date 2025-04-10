@@ -1,0 +1,10 @@
+PROGRAM ARRAYS
+    IMPLICIT NONE
+
+    INTEGER NUMS(2,2)
+
+    !NUMS = [{2,2}, {3,4}]
+
+    PRINT*, NUMS
+    
+END PROGRAM ARRAYS
