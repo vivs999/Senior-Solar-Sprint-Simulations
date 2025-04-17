@@ -3,8 +3,8 @@ PROGRAM SPEED_RATIO_MONTECARLO
     IMPLICIT NONE
 
     ! Constants
-    INTEGER, PARAMETER :: num_threads = 4
-    INTEGER, PARAMETER :: num_iterations = 10000
+    INTEGER, PARAMETER :: num_threads = 100
+    INTEGER, PARAMETER :: num_iterations = 100000
     REAL, PARAMETER :: MAX_SIMULATION_TIME = 1000.0
     REAL, PARAMETER :: MIN_SPEED_THRESHOLD = 0.001
     INTEGER, PARAMETER :: STAGNATION_CHECKS = 500
@@ -44,10 +44,10 @@ PROGRAM SPEED_RATIO_MONTECARLO
     wheel_diameter = 0.0392     ! 39.2 mm diameter
     wheel_radius = wheel_diameter / 2.0
     bearing_count = 4
-    distance_remaining = 15.0 ! 4 meters
+    distance_remaining = 20.0 ! meters
     time_step = 0.001
-    mass = 1.0               ! 1.2 kg
-    gear_ratio = 50.0/20.0    ! 50:1 gear ratio
+    mass = 0.57               ! kg
+    gear_ratio = 50.0/22.0    ! gear ratio
 
     failed_tests = 0
     valid_tests = 0
@@ -59,8 +59,8 @@ PROGRAM SPEED_RATIO_MONTECARLO
     min_time = 1.0E30
 
     rho = 1.225            ! Air density (kg/m^3)
-    Cd = 0.1               ! Drag coefficient (typical value)
-    A = 0.025               ! Frontal area (m^2)
+    Cd = 0.09               ! Drag coefficient (typical value)
+    A = 0.010               ! Frontal area (m^2)
 
     CALL OMP_SET_NUM_THREADS(num_threads)
 
@@ -121,7 +121,7 @@ PROGRAM SPEED_RATIO_MONTECARLO
             current_torque = current_torque * gear_ratio
             
             CALL RANDOM_NUMBER(contact_chance)
-            is_in_contact = (contact_chance <= 0.05)
+            is_in_contact = (contact_chance <= 0.1)
 
             F_drive = current_torque / wheel_radius
             axle_normal_force = (mass * g) / bearing_count
