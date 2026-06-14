@@ -1,0 +1,12 @@
+# compiled binaries
+friction_analysis
+friction_run
+gear_optimizer
+gear_optimizer_run
+run
+sensitivity
+speed_project_2
+terminal_finder
+
+# macOS
+.DS_Store
