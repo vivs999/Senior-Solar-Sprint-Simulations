@@ -1,12 +1,16 @@
-# compiled binaries
-friction_analysis
-friction_run
-gear_optimizer
-gear_optimizer_run
-run
-sensitivity
-speed_project_2
-terminal_finder
-
-# macOS
 .DS_Store
+*.o
+*.mod
+# compiled executables (build with the commands in the README)
+/gear_optimizer
+/speed_project
+/speed_project2
+/speed_project_2
+/friction
+/friction_analysis
+/sensitivity
+/terminal_finder
+/momentum
+/elastic_inelastic
+/Elementary_Fortran/*
+!/Elementary_Fortran/*.f90
